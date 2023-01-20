@@ -2,6 +2,8 @@
 #include <time.h> //How to know when you need include here?
 using namespace std;
 
+int DisplayWelcomeMessage();
+
 int main()
 {
 	srand((unsigned)time(0));
@@ -14,21 +16,16 @@ int main()
 
 
 
-   //Display Welcome message
-	cout << "-------- Welcome to the Amazing number guessing game.--------"<< endl;
-	cout << "    You have 2 guesses to correctly guess the correcto number between 1 and 20:" << endl;
-	cout << "    1) Paly now." << endl;
-	cout << "    2) Quit." << endl;
-	cout << "press 1 or 2: "; //Why don't have (<< endl;)?
+	int input = DisplayWelcomeMessage();
+	void DisplayMessage(string message);
 
-	int input;
-	cin >> input;
 
 
 	switch (input)
 	{
 		case kPlayMenu:
 		{
+			//Ask for a name
 			cout << "What is your name? " << endl;
 			string name;
 			cin >> name;
@@ -94,57 +91,78 @@ int main()
 				cin >> guess;
 				if (guess == randomNumber)
 				{
-					cout << " You are correct!" << endl;
+					DisplayMNessage(" You are correct!");
 
 				}
 				else
 				{
 					if (guess > randomNumber)
 					{
-						cout << "Your guess is too high. Try again!" << endl;
+						DisplayMNessage("Your guess is too high. Try again!");
 					}
 					else
 					{
-						cout << "Your guess is too low. Try again!" << endl;
+						DisplayMNessage("Your guess is too low. Try again!");
 					}
 
 					cout << "Guess 2: " << "Alright " << nickname << " please guess a number: "; //Why don't have (endl;)
 					cin >> guess;
 					if (guess == randomNumber)
 					{
-						cout << " You are correct!" << endl;
+						DisplayMNessage(" You are correct!");
 
 					}
 					else
 					{
 						if (guess > randomNumber)
 						{
-							cout << "Your guess is too high." << endl;
+							DisplayMNessage("Your guess is too high.");
 						}
 						else
 						{
-							cout << "Your guess is too low." << endl;
+							DisplayMNessage("Your guess is too low.");
 						}
-						cout << "Better luck next time. Goodbye!" << endl;
+						DisplayMNessage("Better luck next time. Goodbye!");
 					}
 				}
 			}
 			else
 			{
-				cout << " Invalid gender. Goddbye!" << endl;
+				DisplayMNessage (" Invalid gender. Goddbye!");
 			}
 
 			break;
 		}
 		case kQuitMenu:
 		{
-			cout << "Goodbye" << endl;
+			DisplayMessage ("Goodbye");
 			break;
 		}
 		default:
 		{
-			cout << "Invalid input. Goodbye!" << endl;
+			DisplayMessage ("Invalid input. Goodbye!");
+			break;
 		}
 	}
+}
+
+int DisplayWelcomeMessage()
+{
+	//Display Welcome message
+	cout << "-------- Welcome to the Amazing number guessing game.--------" << endl;
+	cout << "    You have 2 guesses to correctly guess the correcto number between 1 and 20:" << endl;
+	cout << "    1) Paly now." << endl;
+	cout << "    2) Quit." << endl;
+	cout << "press 1 or 2: "; //Why don't have (<< endl;)?
+
+	int input;
+	cin >> input;
+	return input;
+}
+
+void DisplayMessage(string message);
+{
+	cout << message << endl;
+
 }
 
