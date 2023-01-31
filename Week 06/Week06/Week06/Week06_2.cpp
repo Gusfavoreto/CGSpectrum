@@ -10,6 +10,7 @@ void GetSmallestGrade(float theArray[], int size);
 
 int main()
 {
+	
 	constexpr int kSize = 5;
 	float myGrades[kSize];
 	cout << "Please enter 5 grades: " << endl;

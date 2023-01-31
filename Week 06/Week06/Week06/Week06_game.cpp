@@ -6,13 +6,13 @@ constexpr char kPlayerSymbol = '@';
 
 int GetIndexFromCoordinates(int x, int y, int width);
 void DrawLevel(char level[], int width, int height, int playerX, int playerY);
-bool UpdatePlayerPosition(char level[], int& playerX, int& playerY, int width, bool& playerHasKey); // I don't remeber in seeing "int&"
-
+bool UpdatePlayerPosition(char level[], int& playerX, int& playerY, int width, bool& playerHasKey); // I don't remeber in seeing "int&" passing by refence
+ 
 int main()
 {
 	constexpr int kWidth = 25;
 	constexpr int kHeight = 15;
-
+	
 	char levelArray[]{ '+','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','+',
 					  '|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ','*','|',
 					  '|',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','|',' ',' ',' ','|',
@@ -38,6 +38,7 @@ int main()
 		system("cls");
 		DrawLevel(levelArray, kWidth, kHeight, playerX, playerY);
 		gameOver = UpdatePlayerPosition(levelArray, playerX, playerY, kWidth, playerHasKey); // I need rewatch the "k" stuff
+		
 	}
 	system("cls");
 	DrawLevel(levelArray, kWidth, kHeight, playerX, playerY);

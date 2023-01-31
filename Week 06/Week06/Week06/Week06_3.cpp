@@ -8,6 +8,7 @@ void DisplayMap(char map[kHeight][kWidth]);
 
 int main()
 {
+	
 	char myMap[kHeight][kWidth] = { {'+','-','-','-','-','+'},
 									{'|','@',' ',' ',' ','|'},
 									{'|',' ',' ',' ',' ','|'},
