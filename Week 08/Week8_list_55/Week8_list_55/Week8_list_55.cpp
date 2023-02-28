@@ -22,7 +22,12 @@ public:
         if (head)
         {
             //if not a nullptr
-            head->next = p;
+            Node* current = head;
+            while (current->next)
+            {
+                current = current->next;
+            }
+            current->next = p;
         }
         else
         {
@@ -36,6 +41,7 @@ public:
     {
 
     }
+
     void Print()
     {
         Node* current = head;
@@ -56,9 +62,12 @@ int main()
     LinkedList list;
 
     list.Insert(1);
-    list.Print();
+    //list.Print();
 
     list.Insert(5);
+    //list.Print();
+
+    list.Insert(10);
     list.Print();
 
     return 0;
