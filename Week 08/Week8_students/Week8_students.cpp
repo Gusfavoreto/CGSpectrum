@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-
+float GetAverage(float theArray[], int size);
 
 
 int main()
@@ -24,13 +24,25 @@ int main()
         cout << "Enter the grades of the students " << i << ":";
         cin >> aptr[i]; // saves the input to the aptr pointer
     }
+    float result = GetAverage(aptr, students);
+    
+    cout << result;
 
-  
+        
 
-cout << endl;
-delete [] aptr;
+    cout << endl;
+    delete [] aptr;
 
 
 
 }
 
+float GetAverage(float theArray[], int size)
+{
+	float sum = 0;
+	for (int i = 0; i < size; i++)
+	{
+		sum += theArray[i];
+	}
+	return sum / size;
+}
