@@ -37,9 +37,34 @@ public:
         
     } 
 
-    void Delete(int v)
+    void Delete(struct node **head, int v)
     {
+        struct node* current = *head;
+        struct node* previous = *head;
 
+        if (*head == NULL)
+        {
+            cout << "List is empty";
+        }
+        else if(v == 1)
+        {
+            *head = current->next;
+            free(current);
+            current = NULL;
+        }
+        else
+        {
+            while (v != 1)
+            {
+                previous = current;
+                current = current->next;
+                v--;
+            }
+            previous->next = current->link;
+            free(current);
+            current = NULL;
+        }
+        
     }
 
     void Print()
@@ -50,11 +75,11 @@ public:
         while (current)
         {
             //Kepp runnig when it's not nullptr
-            cout << current->next << ",";
+            cout << current->value << ",";
             current = current->next;
         }
                 
-    }
+    } 
 };
 
 int main()
@@ -69,6 +94,10 @@ int main()
 
     list.Insert(10);
     list.Print();
+
+    list.Delete(5);
+    list.Print();
+
 
     return 0;
 }
