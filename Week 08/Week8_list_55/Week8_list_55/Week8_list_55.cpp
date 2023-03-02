@@ -2,94 +2,86 @@
 
 using namespace std;
 
-struct Node 
-{
+struct Node {
     int value;
     Node* next;
 };
 
-class Node
-{
-public:
-    int value = 0;
-    Node* next = nullptr;
-};
-
-class LinkedList
-{
+class LinkedList {
 private:
-    Node* head = nullptr;
+    Node* head;
 public:
-    void Insert(int v)
-    {
-        Node* p = new Node();
-        p->value = v;
+    LinkedList() {
+        head = nullptr;
+    }
 
-        if (head)
-        {
-            //if not a nullptr
+    void Insert(int value) {
+        Node* p = new Node;
+        p->value = value;
+        p->next = nullptr;
+
+        if (head) {
+            // if not a nullptr
             Node* current = head;
-            while (current->next)
-            {
+            while (current->next) {
                 current = current->next;
             }
             current->next = p;
         }
-        else
-        {
-            //if nulptr
+        else {
+            // if nullptr
             head = p;
         }
-        
-    } 
-
-    void Delete(struct node **head, int v)
-    {
-        struct node* current = *head;
-        struct node* previous = *head;
-
-        if (*head == NULL)
-        {
-            cout << "List is empty";
-        }
-        else if(v == 1)
-        {
-            *head = current->next;
-            free(current);
-            current = NULL;
-        }
-        else
-        {
-            while (v != 1)
-            {
-                previous = current;
-                current = current->next;
-                v--;
-            }
-            previous->next = current->next;
-            free(current);
-            current = NULL;
-        }
-        
     }
 
-    void Print()
-    {
+    void Delete(int v) {
+
+        cout << "Deleting node at position " << v << endl;
+
+        if (head == nullptr) {
+            cout << "List is empty" << endl;
+            return;
+        }
+
+        Node* current = head;
+        Node* previous = nullptr;
+
+        while (current != nullptr && v != 1) {
+            previous = current;
+            current = current->next;
+            v--;
+        }
+
+        if (current == nullptr) {
+            cout << "Invalid position" << endl;
+            return;
+        }
+
+        if (previous == nullptr) {
+            // delete the head node
+            head = current->next;
+        }
+        else {
+            previous->next = current->next;
+        }
+
+        delete current;
+    }
+
+    void Print() {
         Node* current = head;
         cout << "The list contains: ";
 
-        while (current)
-        {
-            //Kepp runnig when it's not nullptr
+        while (current) {
+            // Keep running when it's not nullptr
             cout << current->value << ",";
             current = current->next;
         }
-                
-    } 
+        cout << endl;
+    }
 };
 
-int main()
-{
+int main() {
     LinkedList list;
 
     list.Insert(1);
@@ -99,12 +91,10 @@ int main()
     //list.Print();
 
     list.Insert(10);
-    list.Print();
+    //list.Print();
 
-    list.Delete(5);
+    list.Delete(2);
     list.Print();
-
 
     return 0;
 }
-
