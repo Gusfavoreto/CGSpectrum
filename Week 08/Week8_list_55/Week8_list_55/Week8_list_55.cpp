@@ -46,14 +46,14 @@ public:
         Node* current = head;
         Node* previous = nullptr;
 
-        while (current != nullptr && v != 1) {
+        while (current != nullptr && current->value != v) {
             previous = current;
             current = current->next;
-            v--;
+           
         }
 
         if (current == nullptr) {
-            cout << "Invalid position" << endl;
+            cout << "Invalid Number" << endl;
             return;
         }
 
@@ -93,7 +93,7 @@ int main() {
     list.Insert(10);
     //list.Print();
 
-    list.Delete(2);
+    list.Delete(5);
     list.Print();
 
     return 0;
