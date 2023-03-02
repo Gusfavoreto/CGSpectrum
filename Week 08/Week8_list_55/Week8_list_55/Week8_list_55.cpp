@@ -2,6 +2,12 @@
 
 using namespace std;
 
+struct Node 
+{
+    int value;
+    Node* next;
+};
+
 class Node
 {
 public:
@@ -60,7 +66,7 @@ public:
                 current = current->next;
                 v--;
             }
-            previous->next = current->link;
+            previous->next = current->next;
             free(current);
             current = NULL;
         }
