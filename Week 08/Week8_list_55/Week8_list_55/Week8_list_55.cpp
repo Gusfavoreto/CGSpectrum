@@ -49,7 +49,7 @@ public:
         while (current != nullptr && current->value != v) {
             previous = current;
             current = current->next;
-           
+            
         }
 
         if (current == nullptr) {
