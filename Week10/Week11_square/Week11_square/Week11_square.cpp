@@ -24,5 +24,12 @@ public:
 
 int main()
 {
-    
+    int shape;
+    cout << "Enter 1 for Circle or 2 for Rectangle: ";
+    cin >> shape;
+
+    if (shape == 1)
+    {
+
+    }
 }
